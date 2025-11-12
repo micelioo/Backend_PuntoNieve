@@ -1,7 +1,7 @@
 package Pasteleria.PuntoNieve.controller;
 
-import Pasteleria.PuntoNieve.model.DetallePedido;
-import Pasteleria.PuntoNieve.service.DetallePedidoService;
+import Pasteleria.PuntoNieve.model.Carrito;
+import Pasteleria.PuntoNieve.service.CarritoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/detalle-pedido")
-public class DetallePedidoController {
+@RequestMapping("/api/v1/carrito")
+public class CarritoController {
 
     @Autowired
-    private DetallePedidoService detallePedidoService;
+    private CarritoService carritoService;
 
     @GetMapping
-    public ResponseEntity<List<DetallePedido>> listar() {
-        List<DetallePedido> lista = detallePedidoService.findAll();
+    public ResponseEntity<List<Carrito>> listar() {
+        List<Carrito> lista = carritoService.findAll();
         if (lista.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,15 +34,15 @@ public class DetallePedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<DetallePedido> guardar(@RequestBody DetallePedido detalle) {
-        DetallePedido nuevo = detallePedidoService.save(detalle);
+    public ResponseEntity<Carrito> guardar(@RequestBody Carrito carrito) {
+        Carrito nuevo = carritoService.save(carrito);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetallePedido> buscar(@PathVariable Long id) {
+    public ResponseEntity<Carrito> buscar(@PathVariable Long id) {
         try {
-            DetallePedido encontrado = detallePedidoService.findById(id);
+            Carrito encontrado = carritoService.findById(id);
             return ResponseEntity.ok(encontrado);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
@@ -50,15 +50,15 @@ public class DetallePedidoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetallePedido> actualizar(@PathVariable Long id, @RequestBody DetallePedido detalle) {
+    public ResponseEntity<Carrito> actualizar(@PathVariable Long id, @RequestBody Carrito carrito) {
         try {
-            DetallePedido existente = detallePedidoService.findById(id);
+            Carrito existente = carritoService.findById(id);
 
-            existente.setIdDetallePedido(id);
-            existente.setCantidad(detalle.getCantidad());
-            existente.setPrecioUnitario(detalle.getPrecioUnitario());
+            existente.setIdCarrito(id);
+            existente.setCantidad(carrito.getCantidad());
+            existente.setPrecioUnitario(carrito.getPrecioUnitario());
 
-            detallePedidoService.save(existente);
+            carritoService.save(existente);
             return ResponseEntity.ok(existente);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
@@ -68,7 +68,7 @@ public class DetallePedidoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
         try {
-            detallePedidoService.delete(id);
+            carritoService.delete(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

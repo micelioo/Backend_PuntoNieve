@@ -2,8 +2,6 @@ package Pasteleria.PuntoNieve.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,18 +13,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-
+import lombok.NoArgsConstructor;
+import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "detalle_pedido")
+@Table(name = "carrito")
 @NoArgsConstructor
 @AllArgsConstructor
-public class DetallePedido {
+public class Carrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDetallePedido;
+    private Long idCarrito;
 
     @Column(nullable = false)
     private Integer cantidad;
@@ -40,7 +39,7 @@ public class DetallePedido {
     @JoinColumn(
             name = "id_pedido",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_detalle_pedido_pedido")
+            foreignKey = @ForeignKey(name = "fk_carrito_pedido")
     )
     private Pedido pedido;
 
@@ -49,7 +48,7 @@ public class DetallePedido {
     @JoinColumn(
             name = "id_producto",
             nullable = false,
-            foreignKey = @ForeignKey(name = "fk_detalle_pedido_producto")
+            foreignKey = @ForeignKey(name = "fk_carrito_producto")
     )
     private Producto producto;
 }
