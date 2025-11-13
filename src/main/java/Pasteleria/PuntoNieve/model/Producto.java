@@ -42,16 +42,13 @@ public class Producto {
     @Column(nullable = false)
     private Integer precio;
 
-    @Column(nullable = false)
-    private Integer stock;
-
     @Column(nullable = true)
     private String imagenUrl; 
 
     @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<DetallePedido> detallePedidos;
+    private List<Carrito> detallePedidos;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference

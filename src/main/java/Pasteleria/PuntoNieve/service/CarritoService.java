@@ -1,7 +1,7 @@
 package Pasteleria.PuntoNieve.service;
 
-import Pasteleria.PuntoNieve.model.DetallePedido;
-import Pasteleria.PuntoNieve.repository.DetallePedidoRepository;
+import Pasteleria.PuntoNieve.model.Carrito;
+import Pasteleria.PuntoNieve.repository.CarritoRepository;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,24 +11,24 @@ import java.util.List;
 
 @Service
 @Transactional
-public class DetallePedidoService {
+public class CarritoService {
 
     @Autowired
-    private DetallePedidoRepository detallePedidoRepository;
+    private CarritoRepository carritoRepository;
 
-    public List<DetallePedido> findAll() {
-        return detallePedidoRepository.findAll();
+    public List<Carrito> findAll() {
+        return carritoRepository.findAll();
     }
 
-    public DetallePedido findById(Long id) {
-        return detallePedidoRepository.findById(id).orElse(null);
+    public Carrito findById(Long id) {
+        return carritoRepository.findById(id).orElse(null);
     }
 
-    public DetallePedido save(DetallePedido detallePedido) {
-        return detallePedidoRepository.save(detallePedido);
+    public Carrito save(Carrito carrito) {
+        return carritoRepository.save(carrito);
     }
 
     public void delete(Long id) {
-        detallePedidoRepository.deleteById(id);
+        carritoRepository.deleteById(id);
     }
-} 
+}

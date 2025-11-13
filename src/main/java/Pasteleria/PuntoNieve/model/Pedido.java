@@ -55,5 +55,5 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<DetallePedido> detallePedidos;
+    private List<Carrito> detallePedidos;
 }

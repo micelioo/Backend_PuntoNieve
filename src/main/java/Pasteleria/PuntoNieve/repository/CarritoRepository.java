@@ -1,8 +1,8 @@
 package Pasteleria.PuntoNieve.repository;
 
-import Pasteleria.PuntoNieve.model.DetallePedido;
+import Pasteleria.PuntoNieve.model.Carrito;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Long> {
+public interface CarritoRepository extends JpaRepository<Carrito, Long> {
 
 }
