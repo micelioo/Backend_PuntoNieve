@@ -58,4 +58,9 @@ public class Producto {
             foreignKey = @ForeignKey(name = "fk_producto_categoria")
     )
     private Categoria categoria;
+
+    @JsonProperty("categoriaDescripcion")
+    public String getCategoriaDescripcion() {
+        return (categoria != null) ? categoria.getDescripcion() : null;
+    }
 }

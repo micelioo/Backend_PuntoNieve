@@ -24,11 +24,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table (name = "pedido") 
+@Table(name = "pedido")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pedido { 
+public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ public class Pedido {
     private String estado;
 
     @Column(nullable = false)
-    private Integer total; 
+    private Integer total;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
@@ -56,4 +56,20 @@ public class Pedido {
     @JsonManagedReference
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<Carrito> detallePedidos;
+
+    @JsonProperty("runCliente")
+    public String getRunCliente() {
+        return (cliente != null) ? cliente.getRun() : null;
+    }
+
+    @JsonProperty("nombreCompletoCliente")
+    public String getNombreCompletoCliente() {
+        if (cliente == null) return null;
+        return cliente.getNombres() + " " + cliente.getApe1() + " " + cliente.getApe2();
+    }
+
+    @JsonProperty("correoCliente")
+    public String getCorreoCliente() {
+        return (cliente != null) ? cliente.getCorreo() : null;
+    }
 }

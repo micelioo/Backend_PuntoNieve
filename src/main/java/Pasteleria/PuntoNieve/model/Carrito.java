@@ -51,4 +51,26 @@ public class Carrito {
             foreignKey = @ForeignKey(name = "fk_carrito_producto")
     )
     private Producto producto;
+
+    @JsonProperty("nombreProducto")
+    public String getNombreProducto() {
+        return (producto != null) ? producto.getNombre() : null;
+    }
+
+    @JsonProperty("categoriaProducto")
+    public String getCategoriaProducto() {
+        if (producto == null || producto.getCategoria() == null) return null;
+        return producto.getCategoria().getDescripcion();
+    }
+
+    @JsonProperty("subtotal")
+    public Integer getSubtotal() {
+        if (cantidad == null || precioUnitario == null) return null;
+        return cantidad * precioUnitario;
+    }
+
+    @JsonProperty("estadoPedido")
+    public String getEstadoPedido() {
+        return (pedido != null) ? pedido.getEstado() : null;
+    }
 }

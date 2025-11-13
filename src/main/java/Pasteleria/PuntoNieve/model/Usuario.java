@@ -1,5 +1,6 @@
 package Pasteleria.PuntoNieve.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,4 +28,19 @@ public class Usuario {
     @JoinColumn(name = "run_cliente", referencedColumnName = "run")
     private Cliente cliente;
 
+    @JsonProperty("runCliente")
+    public String getRunCliente() {
+        return (cliente != null) ? cliente.getRun() : null;
+    }
+
+    @JsonProperty("nombreCompletoCliente")
+    public String getNombreCompletoCliente() {
+        if (cliente == null) return null;
+        return cliente.getNombres() + " " + cliente.getApe1() + " " + cliente.getApe2();
+    }
+
+    @JsonProperty("correoCliente")
+    public String getCorreoCliente() {
+        return (cliente != null) ? cliente.getCorreo() : null;
+    }
 }
