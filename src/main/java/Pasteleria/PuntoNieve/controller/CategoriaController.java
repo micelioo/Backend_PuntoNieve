@@ -16,14 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Pasteleria.PuntoNieve.model.Categoria;
 import Pasteleria.PuntoNieve.service.CategoriaService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+
 @RestController
 @RequestMapping("/api/v1/categorias")
+@Tag(name = "Categoría", description = "Operaciones relacionadas con categorías de productos")
+
 public class CategoriaController {
 
     @Autowired
