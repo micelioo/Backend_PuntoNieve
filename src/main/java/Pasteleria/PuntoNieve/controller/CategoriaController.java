@@ -23,7 +23,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-
 @RestController
 @RequestMapping("/api/v1/categorias")
 @Tag(name = "Categoría", description = "Operaciones relacionadas con categorías de productos")
