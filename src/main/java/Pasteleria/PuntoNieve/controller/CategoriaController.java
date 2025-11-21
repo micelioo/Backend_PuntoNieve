@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/api/v1/categorias")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${app.frontend.origin}")
 @Tag(name = "Categoría", description = "Operaciones relacionadas con categorías de productos")
 
 public class CategoriaController {
